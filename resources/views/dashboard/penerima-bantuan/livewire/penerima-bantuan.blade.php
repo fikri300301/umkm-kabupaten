@@ -75,7 +75,7 @@
 
          <x-modal name="{{ $formAction }}.PenerimaBantuan" wire:model="{{ $formAction }}">
        
-            <x-select name="umkm_id" label="Category Pelatihan">
+            <x-select name="umkm_id" label="Penerima Bantuan">
                 @foreach ($umkms as $item)
                     <option @selected(@$umkm == $item->id || old('umkm_id') == $item->id) value="{{ $item->id }}">
                         {{ $item->nama }} || {{  $item->pemilik}}

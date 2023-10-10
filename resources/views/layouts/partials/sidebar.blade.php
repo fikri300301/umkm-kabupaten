@@ -2,10 +2,10 @@
 
 				{{-- <x-sidebar.sidebar-item name="Halaman Utama" :link="route('welcome')" icon="bi bi-arrow-90deg-left" /> --}}
 				{{-- dashbord --}}
-				@can('show-dashboard')
+				{{-- @can('show-dashboard') --}}
 								<x-sidebar.side-title title="Dashboard" />
 								<x-sidebar.sidebar-item name="Dashboard" :link="route('dashboard')" icon="bi bi-grid-fill" />
-				@endcan
+				{{-- @endcan --}}
 
 				{{-- Master --}}
 				@canany(['show-kecamatan', 'show-bidang','show-category','show-pelatihan',])

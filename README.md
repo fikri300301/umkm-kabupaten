@@ -1,7 +1,7 @@
 
-# BEM FMIPA UNESA
+# Pendataan umkm
 
-applikasi berbasis web untuk keperluan BEM FMIPA UNESA
+applikasi berbasis web pendataan umkm
 
 
 
@@ -10,13 +10,13 @@ applikasi berbasis web untuk keperluan BEM FMIPA UNESA
 Clone the project
 
 ```bash
-  git clone https://github.com/linlaz/bemf_unesa.git
+  git clone (https://github.com/fikri300301/umkm-kabupaten.git)
 ```
 
 Go to the project directory
 
 ```bash
-  cd bemf_unesa
+  cd umkm
 ```
 
 Install dependencies composer and nodejs

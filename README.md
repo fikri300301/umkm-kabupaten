@@ -10,7 +10,7 @@ applikasi berbasis web pendataan umkm
 Clone the project
 
 ```bash
-  git clone (https://github.com/fikri300301/umkm-kabupaten.git)
+  git clone https://github.com/fikri300301/umkm-kabupaten.git
 ```
 
 Go to the project directory

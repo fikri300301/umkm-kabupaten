@@ -18,3 +18,4 @@ use App\Http\Controllers\Api\PelatihanController;
 
 Route::get("/manage-kecamatan", [KecamatanController::class, 'index']);
 Route::get("/pelatihan", [PelatihanController::class, 'index']);
+Route::get("/pelatihan-satu", [PelatihanController::class, 'index']);

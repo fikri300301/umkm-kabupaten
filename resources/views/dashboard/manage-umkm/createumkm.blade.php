@@ -10,22 +10,22 @@
         <div class="card">
             <div class="card-body">
                 <form class="my-2" id="form" enctype="multipart/form-data" method="post"
-                    action="/dashboard/{{$action}}-umkm/{{ $slug_umkm }}">
+                    action="/dashboard/{{ $action }}-umkm/{{ $slug_umkm }}">
                     @csrf
                     <input type="hidden" name="uniqId" value="{{ @$uniqId }}">
-                   
-                    @if ($errors->any())
-                  <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-@endif
 
-                    <x-input name="nama" label="Nama " value="{{ $nama ?? old('nama') }}"
-                        placeholder="Nama UMKM" required="1" />
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
+                    <x-input name="nama" label="Nama " value="{{ $nama ?? old('nama') }}" placeholder="Nama UMKM"
+                        required="1" />
 
                     <x-select name="bidang_id" label="Bidang">
                         @foreach ($bidang as $item)
@@ -35,30 +35,31 @@
                         @endforeach
                     </x-select>
 
-                    <x-input name="produk" label="Produk " value="{{ $produk ?? old('produk') }}"
-                    placeholder="Mie" required="1" />
+                    <x-input name="produk" label="Produk " value="{{ $produk ?? old('produk') }}" placeholder="Mie"
+                        required="1" />
 
                     <x-input name="pemilik" label="nama pemilik" value="{{ $pemilik ?? old('pemilik') }}"
-                    placeholder="nama pemilik" required="1" />
+                        placeholder="nama pemilik" required="1" />
 
                     <x-input name="telepon" label="NO HP" value="{{ $telepon ?? old('telepon') }}"
-                    placeholder="085XXXXXXXXX" required="1" />
+                        placeholder="085XXXXXXXXX" required="1" />
 
                     <x-input class="form-control" name="nik" label="nik" value="{{ $nik ?? old('nik') }}"
-                    placeholder="085XXXXXXXXX" required="1" />
+                        placeholder="085XXXXXXXXX" required="1" />
 
                     <x-input name="alamat" label="alamat" value="{{ $alamat ?? old('alamat') }}"
-                    placeholder="nama jalan dan no rumah" required="1" />
+                        placeholder="nama jalan dan no rumah" required="1" />
 
-                    <x-input name="rt" label="RT" value="{{ $rt ?? old('rt') }}"
-                    placeholder="08" required="1" />
+                    <x-input name="rt" label="RT" value="{{ $rt ?? old('rt') }}" placeholder="08"
+                        required="1" />
 
-                    <x-input name="rw" label="RW" value="{{ $rw ?? old('rw') }}"
-                    placeholder="08" required="1" />
+                    <x-input name="rw" label="RW" value="{{ $rw ?? old('rw') }}" placeholder="08"
+                        required="1" />
 
                     <x-select name="desa_id" label="Desa">
                         @foreach ($desa as $item)
-                            <option @selected(@$desa_id == $item->id || old('desa_id') == $item->id) kecamantanId="{{ $item->kecamatan_id }}" value="{{ $item->id }}">
+                            <option @selected(@$desa_id == $item->id || old('desa_id') == $item->id) kecamantanId="{{ $item->kecamatan_id }}"
+                                value="{{ $item->id }}">
                                 {{ $item->name_desa }}
                             </option>
                         @endforeach
@@ -72,30 +73,62 @@
                         @endforeach
                     </x-select>
                     <input type="hidden" name="kecamatan_id" id="kecamatan_id" value="{{ $kecamatan_id }}">
-                    <x-input type="number" name="kapasitas_produk" label="Kapasitas Produk" value="{{ $kapasitas_produk ?? old('kapasitas_produk') }}"
-                   required="1" />
+                    <x-input type="number" name="kapasitas_produk" label="Kapasitas Produk"
+                        value="{{ $kapasitas_produk ?? old('kapasitas_produk') }}" required="1" />
 
-                   <x-input type="number" name="omset" label="omset pertahun" value="{{ $omset ?? old('omset') }}"
-                   required="1" />
+                    <x-input type="number" name="omset" label="omset pertahun" value="{{ $omset ?? old('omset') }}"
+                        required="1" />
 
-                   <x-input type="number" name="tenaga_kerja" label="tenaga Kerja* " value="{{ $tenaga_kerja ?? old('tenaga_kerja') }}"
-                  required="1" />
+                    <x-input type="number" name="tenaga_kerja" label="tenaga Kerja* "
+                        value="{{ $tenaga_kerja ?? old('tenaga_kerja') }}" required="1" />
 
-                   <x-input name="daerah_pemasaran" label="daerah pemasaran " value="{{ $daerah_pemasaran ?? old('daerah_pemasaran') }}"
-                   placeholder="Daerah pemasaran" required="1" />
+                    <x-input name="daerah_pemasaran" label="daerah pemasaran "
+                        value="{{ $daerah_pemasaran ?? old('daerah_pemasaran') }}" placeholder="Daerah pemasaran"
+                        required="1" />
 
-                   <x-input name="modal_usaha" type="number" label="modal usaha " value="{{ $modal_usaha ?? old('modal_usaha') }}"
-                   placeholder="50.000.000" required="1" />
+                    <x-input name="modal_usaha" type="number" label="modal usaha "
+                        value="{{ $modal_usaha ?? old('modal_usaha') }}" placeholder="50.000.000" required="1" />
 
-                   <x-select name="categories_id" label="Kategori umkm" id="categories_id">
-                    @foreach ($categories as $item)
-                        <option @selected(@$categories_id == $item->id || old('categories_id') == $item->id) value="{{ $item->id }}">
-                            {{ $item->name_category . ' || ' . $item->angka }}
-                        </option>
-                    @endforeach
-                </x-select>
+                    <x-select name="categories_id" label="Kategori umkm" id="categories_id">
+                        @foreach ($categories as $item)
+                            <option @selected(@$categories_id == $item->id || old('categories_id') == $item->id) value="{{ $item->id }}">
+                                {{ $item->name_category . ' || ' . $item->angka }}
+                            </option>
+                        @endforeach
+                    </x-select>
 
-                {{-- <div class="mb-3">
+            </div>
+            <div class="d-inline gap-3">
+                <a href="{{ route('dashboard') }}" class="btn btn-warning">Cancel</a>
+                <button type="submit" class="btn btn-primary ms-1">Kirim</button>
+            </div>
+
+            </form>
+        </div>
+        </div>
+
+
+    </section>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    @push('scripts')
+        <script type="module">
+            $(document).ready(function() {
+                $('.select-multiple').select2();
+                $('#desa_id').change((e) => {
+                    var attributes = $(e.target).find('option:selected').prop("attributes");
+                    // console.log(attributes[0].value);
+                    $('#kecamatan_id').val(attributes[0].value);
+                    $('#kecamatan_select').val(attributes[0].value);
+                });
+            });
+        </script>
+    @endpush
+
+
+</x-app-layout>
+{{-- <div class="mb-3">
                     <label for="bantuan" class="form-label">
                         <h6>Bantuan</h6>
                     </label>
@@ -118,7 +151,7 @@
                     @enderror
                 </div> --}}
 
-                {{-- <div class="mb-3">
+{{-- <div class="mb-3">
                     <label for="Pelatihan" class="form-label">
                         <h6>Pelatihan</h6>
                     </label>
@@ -139,34 +172,3 @@
                             <span>{{ $message }}</span>
                         </div>
                     @enderror --}}
-                </div>
-                    <div class="d-inline gap-3">
-                        <a href="{{ route('dashboard') }}" class="btn btn-warning">Cancel</a>
-                        <button type="submit" class="btn btn-primary ms-1">Kirim</button>
-                    </div>
-
-                </form>
-            </div>
-        </div>
-
-
-    </section>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-
-    @push('scripts') 
-    <script type="module">
-   $(document).ready(function() {
-        $('.select-multiple').select2();
-        $('#desa_id').change((e) => {
-            var attributes = $(e.target).find('option:selected').prop("attributes");
-            // console.log(attributes[0].value);
-            $('#kecamatan_id').val(attributes[0].value);
-            $('#kecamatan_select').val(attributes[0].value);
-        });
-    });    
-    </script>    
-    @endpush
-
-
-</x-app-layout>

@@ -21,21 +21,26 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class UmkmController extends Controller
 {
-   public function fullView(){
-    
-    $data = umkm::with(['bidang','kecamatan','desa','category',])->orderBy('nama', 'asc')->get();
-    return view('livewire.umkm-view',[
-        'data' => $data
-    ]
-);
-   }
+    public function fullView()
+    {
 
-   public function export_excel(){
-    return Excel::download(new ExportUmkm,"umkm.xlsx");
-   }
-   // public $slug_umkm='';
-    public function createDashboard(){
-        return view('dashboard.manage-umkm.createumkm',[
+        $data = umkm::with(['bidang', 'kecamatan', 'desa', 'category',])->orderBy('nama', 'asc')->get();
+        return view(
+            'livewire.umkm-view',
+            [
+                'data' => $data
+            ]
+        );
+    }
+
+    public function export_excel()
+    {
+        return Excel::download(new ExportUmkm, "umkm.xlsx");
+    }
+    // public $slug_umkm='';
+    public function createDashboard()
+    {
+        return view('dashboard.manage-umkm.createumkm', [
             'action' => 'store',
             'slug_umkm' => null,
             'uniqId' => null,
@@ -51,7 +56,8 @@ class UmkmController extends Controller
         ]);
     }
 
-    public function storeDashboard(Request $request){
+    public function storeDashboard(Request $request)
+    {
         //  dd($request);
         try {
             $validated = $request->validate([
@@ -70,20 +76,21 @@ class UmkmController extends Controller
                 'modal_usaha' => 'required',
                 'daerah_pemasaran' => 'required',
                 'categories_id' => 'required',
-                
-                ]);
-                $umkm = umkm::create($request->all());
-                session()->flash('messageAction','success');
-                return to_route('dashboard');
+
+            ]);
+            $umkm = umkm::create($request->all());
+            session()->flash('messageAction', 'success');
+            return to_route('dashboard');
         } catch (\Throwable $th) {
             dd($th);
         }
     }
 
-    public function editdashboard($slug_umkm){
-        
-        $umkm = umkm::where('slug_umkm',$slug_umkm)->first();
-        return view('dashboard.manage-umkm.createumkm',[
+    public function editdashboard($slug_umkm)
+    {
+
+        $umkm = umkm::where('slug_umkm', $slug_umkm)->first();
+        return view('dashboard.manage-umkm.createumkm', [
             'action' => 'update',
             'uniqId' => encrypt($umkm->id),
             'slug_umkm' => $umkm->slug_umkm,
@@ -114,14 +121,15 @@ class UmkmController extends Controller
             'kecamtan' => Kecamatan::all(),
             'categories' => Category::all(),
             'perizinan' => Perizinan::all(),
-           // 'bantuan' => $umkm->bantuan->name_bantuan,
+            // 'bantuan' => $umkm->bantuan->name_bantuan,
             'pelatihans' => Pelatihan::all()
         ]);
     }
 
-    public function updateDashboard(UmkmRequest $umkmRequest){
-       // dd($request);
-       $umkm = umkm::findOrFail(decrypt($umkmRequest->uniqId));
+    public function updateDashboard(UmkmRequest $umkmRequest)
+    {
+        // dd($request);
+        $umkm = umkm::findOrFail(decrypt($umkmRequest->uniqId));
         try {
             $umkm->update([
                 'uniqid' => encrypt($umkmRequest->id),
@@ -144,18 +152,12 @@ class UmkmController extends Controller
                 'categories_id' => $umkmRequest->categories_id,
                 'perizinan_id' => $umkmRequest->perizinan_id
             ]);
-                DB::commit();
+            DB::commit();
 
-                session()->flash('messageAction','success');
-                return to_route('dashboard');
+            session()->flash('messageAction', 'success');
+            return to_route('dashboard');
         } catch (\Throwable $th) {
             throw $th;
-            
         }
     }
-
- 
-
-  
-    
 }

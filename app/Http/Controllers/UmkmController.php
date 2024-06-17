@@ -83,7 +83,7 @@ class UmkmController extends Controller
             session()->flash('messageAction', 'success');
             return to_route('dashboard');
         } catch (\Throwable $th) {
-            //dd($th);
+            dd($th);
         }
     }
 

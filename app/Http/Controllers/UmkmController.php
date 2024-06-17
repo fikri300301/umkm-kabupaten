@@ -61,6 +61,7 @@ class UmkmController extends Controller
         //  dd($request);
         try {
             $validated = $request->validate([
+                'action' => 'store',
                 'nama' => 'required',
                 'bidang_id' => 'required',
                 'produk' => 'required',

@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class BidangController extends Controller
 {
-    public function index()
+    public function list()
     {
         $bidangs = Bidang::all(); // Get all Kecamatan records
 

@@ -91,7 +91,7 @@ class UmkmController extends Controller
     {
 
         $umkm = umkm::where('slug_umkm', $slug_umkm)->first();
-        return view('dashboard.manage-umkm.createumkm', [
+        return view('dashboard.manage-umkm.editumkm', [
             'action' => 'update',
             'uniqId' => encrypt($umkm->id),
             'slug_umkm' => $umkm->slug_umkm,

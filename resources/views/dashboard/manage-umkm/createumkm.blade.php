@@ -3,14 +3,14 @@
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <x-slot name="header">
         <h3>{{ ucWords($action) }} UMKM</h3>
-        <p class="text-subtitle text-muted">This page for {{ $action }} proker.</p>
+        <p class="text-subtitle text-muted">Halaman ini untuk {{ $action }} proker.</p>
     </x-slot>
 
     <section class="section">
         <div class="card">
             <div class="card-body">
                 <form class="my-2" id="form" enctype="multipart/form-data" method="post"
-                    action="/dashboard/{{ $action }}-umkm/{{ $slug_umkm }}">
+                    action="/dashboard/store-umkm">
                     @csrf
                     <input type="hidden" name="uniqId" value="{{ @$uniqId }}">
 
@@ -23,6 +23,8 @@
                             </ul>
                         </div>
                     @endif
+
+                    <!-- Field form lainnya -->
 
                     <x-input name="nama" label="Nama " value="{{ $nama ?? old('nama') }}" placeholder="Nama UMKM"
                         required="1" />
@@ -38,17 +40,17 @@
                     <x-input name="produk" label="Produk " value="{{ $produk ?? old('produk') }}" placeholder="Mie"
                         required="1" />
 
-                    <x-input name="pemilik" label="nama pemilik" value="{{ $pemilik ?? old('pemilik') }}"
-                        placeholder="nama pemilik" required="1" />
+                    <x-input name="pemilik" label="Nama Pemilik" value="{{ $pemilik ?? old('pemilik') }}"
+                        placeholder="Nama Pemilik" required="1" />
 
                     <x-input name="telepon" label="NO HP" value="{{ $telepon ?? old('telepon') }}"
                         placeholder="085XXXXXXXXX" required="1" />
 
-                    <x-input class="form-control" name="nik" label="nik" value="{{ $nik ?? old('nik') }}"
+                    <x-input class="form-control" name="nik" label="NIK" value="{{ $nik ?? old('nik') }}"
                         placeholder="085XXXXXXXXX" required="1" />
 
-                    <x-input name="alamat" label="alamat" value="{{ $alamat ?? old('alamat') }}"
-                        placeholder="nama jalan dan no rumah" required="1" />
+                    <x-input name="alamat" label="Alamat" value="{{ $alamat ?? old('alamat') }}"
+                        placeholder="Nama jalan dan no rumah" required="1" />
 
                     <x-input name="rt" label="RT" value="{{ $rt ?? old('rt') }}" placeholder="08"
                         required="1" />
@@ -76,20 +78,20 @@
                     <x-input type="number" name="kapasitas_produk" label="Kapasitas Produk"
                         value="{{ $kapasitas_produk ?? old('kapasitas_produk') }}" required="1" />
 
-                    <x-input type="number" name="omset" label="omset pertahun" value="{{ $omset ?? old('omset') }}"
+                    <x-input type="number" name="omset" label="Omset Pertahun" value="{{ $omset ?? old('omset') }}"
                         required="1" />
 
-                    <x-input type="number" name="tenaga_kerja" label="tenaga Kerja* "
+                    <x-input type="number" name="tenaga_kerja" label="Tenaga Kerja"
                         value="{{ $tenaga_kerja ?? old('tenaga_kerja') }}" required="1" />
 
-                    <x-input name="daerah_pemasaran" label="daerah pemasaran "
-                        value="{{ $daerah_pemasaran ?? old('daerah_pemasaran') }}" placeholder="Daerah pemasaran"
+                    <x-input name="daerah_pemasaran" label="Daerah Pemasaran"
+                        value="{{ $daerah_pemasaran ?? old('daerah_pemasaran') }}" placeholder="Daerah Pemasaran"
                         required="1" />
 
-                    <x-input name="modal_usaha" type="number" label="modal usaha "
+                    <x-input name="modal_usaha" type="number" label="Modal Usaha"
                         value="{{ $modal_usaha ?? old('modal_usaha') }}" placeholder="50.000.000" required="1" />
 
-                    <x-select name="categories_id" label="Kategori umkm" id="categories_id">
+                    <x-select name="categories_id" label="Kategori UMKM" id="categories_id">
                         @foreach ($categories as $item)
                             <option @selected(@$categories_id == $item->id || old('categories_id') == $item->id) value="{{ $item->id }}">
                                 {{ $item->name_category . ' || ' . $item->angka }}
@@ -97,17 +99,14 @@
                         @endforeach
                     </x-select>
 
+                    <div class="d-inline gap-3">
+                        <a href="{{ route('dashboard') }}" class="btn btn-warning">Cancel</a>
+                        <button type="submit" class="btn btn-primary ms-1">Kirim</button>
+                    </div>
+
+                </form>
             </div>
-            <div class="d-inline gap-3">
-                <a href="{{ route('dashboard') }}" class="btn btn-warning">Cancel</a>
-                <button type="submit" class="btn btn-primary ms-1">Kirim</button>
-            </div>
-
-            </form>
         </div>
-        </div>
-
-
     </section>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
@@ -126,8 +125,8 @@
         </script>
     @endpush
 
-
 </x-app-layout>
+
 {{-- <div class="mb-3">
                     <label for="bantuan" class="form-label">
                         <h6>Bantuan</h6>

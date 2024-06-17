@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\api;
+namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
 use App\Models\Bidang;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class BidangController extends Controller
 {
-    public function list()
+
+    public function index()
     {
         $bidangs = Bidang::all(); // Get all Kecamatan records
 

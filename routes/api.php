@@ -27,3 +27,4 @@ Route::get("/desa", [DesaController::class, 'index']);
 Route::get("/perizinan", [PerizinanController::class, 'index']);
 Route::get("/pelatihan-satu", [PelatihanController::class, 'index']);
 Route::get("/category-mikro", [CategoryController::class, 'mikro']);
+Route::get("/category-menengah", [CategoryController::class, 'menengah']);

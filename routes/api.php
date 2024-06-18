@@ -3,6 +3,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\BidangController;
+use App\Http\Controllers\Api\DesaController;
 use App\Http\Controllers\Api\KecamatanController;
 use App\Http\Controllers\Api\PelatihanController;
 
@@ -20,4 +21,5 @@ use App\Http\Controllers\Api\PelatihanController;
 Route::get("/kecamatan", [KecamatanController::class, 'index']);
 Route::get("/pelatihan", [PelatihanController::class, 'index']);
 Route::get("/bidang", [BidangController::class, 'index']);
+Route::get("/desa", [DesaController::class, 'index']);
 Route::get("/pelatihan-satu", [PelatihanController::class, 'index']);

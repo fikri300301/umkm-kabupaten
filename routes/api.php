@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\DesaController;
 use App\Http\Controllers\Api\KecamatanController;
 use App\Http\Controllers\Api\PelatihanController;
 use App\Http\Controllers\Api\PerizinanController;
+use App\Http\Controllers\Api\UmkmController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,3 +29,4 @@ Route::get("/perizinan", [PerizinanController::class, 'index']);
 Route::get("/pelatihan-satu", [PelatihanController::class, 'index']);
 Route::get("/category-mikro", [CategoryController::class, 'mikro']);
 Route::get("/category-menengah", [CategoryController::class, 'menengah']);
+Route::get("/umkm", [UmkmController::class, 'index']);

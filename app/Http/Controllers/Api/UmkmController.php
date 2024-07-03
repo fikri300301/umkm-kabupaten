@@ -10,7 +10,7 @@ class UmkmController extends Controller
 {
     public function index()
     {
-        $umkms = umkm::all();
+        $umkms = umkm::with('bidang')->get();
 
         if ($umkms->isEmpty()) {
             return response()->json(['data belum tersedia']);

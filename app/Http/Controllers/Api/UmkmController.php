@@ -18,7 +18,8 @@ class UmkmController extends Controller
 
         $data = $umkms->map(function ($umkm) {
             return [
-                'nama' => $umkm->nama
+                'nama' => $umkm->nama,
+                'Pemilik' => $umkm->pemilik
             ];
         });
 

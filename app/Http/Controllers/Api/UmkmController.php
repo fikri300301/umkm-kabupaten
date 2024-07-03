@@ -20,7 +20,8 @@ class UmkmController extends Controller
             return [
                 'nama' => $umkm->nama,
                 'Pemilik' => $umkm->pemilik,
-                'Bidang' => $umkm->bidang_id
+                'Bidang' => $umkm->bidang_id,
+                'produk' => $umkm->produk
             ];
         });
 
